@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
 import MoviesPage from "./MoviesPage";
 
@@ -13,14 +13,12 @@ function App() {
   return (
     <div>
       <NavBar />
-      <Switch>
-        <Route path="/movies">
-          <MoviesPage movies={movies} />
+      <Routes>
+        <Route path="/movies/*" element={<MoviesPage movies={movies} />} />
+        <Route path="/">
+          Home
         </Route>
-        <Route exact path="/">
-          <div>Home</div>
-        </Route>
-      </Switch>
+      </Routes>
     </div>
   );
 }
